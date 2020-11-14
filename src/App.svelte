@@ -11,8 +11,8 @@
     const node = await Libp2p.create({
       addresses: {
         listen: [
-          "/dns4/wrtc-star1.par.dwebops.pub/tcp/443/wss/p2p-webrtc-star",
-          "/dns4/wrtc-star2.sjc.dwebops.pub/tcp/443/wss/p2p-webrtc-star",
+          // "/dns4/wrtc-star1.par.dwebops.pub/tcp/443/wss/p2p-webrtc-star",
+          // "/dns4/wrtc-star2.sjc.dwebops.pub/tcp/443/wss/p2p-webrtc-star",
           "/dns4/localhost/tcp/3000/ws/p2p-webrtc-star/",
         ],
       },
@@ -45,13 +45,14 @@
     });
     node.connectionManager.on("peer:connect", (connection) => {
       console.log(`Connected to ${connection.remotePeer.toB58String()}`);
+      console.log(connection.remotePeer);
     });
     node.connectionManager.on("peer:disconnect", (connection) => {
       console.log(`Disconnected from ${connection.remotePeer.toB58String()}`);
     });
 
     await node.start();
-    console.log(`libp2p id is ${Libp2p.peerId.toB58String()}`);
+    console.log(`libp2p id is ${node.peerId.toB58String()}`);
   });
 </script>
 

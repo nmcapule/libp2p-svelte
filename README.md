@@ -26,3 +26,5 @@ $ # needed coz libp2p says so. damn.
 $ npm install rollup-plugin-node-builtins rollup-plugin-node-globals --save-dev
 $ # rollup-plugin-node-polyfills seems more updated but it blows up the compile :P
 ```
+
+ref: https://github.com/nodejs/readable-stream/issues/348

@@ -61,9 +61,11 @@ export default {
 		resolve({
 			browser: true,
 			dedupe: ['svelte'],
-			preferBuiltins: true,
+			preferBuiltins: false,
 		}),
-		commonjs(),
+		commonjs({
+			transformMixedEsModules: true,
+		}),
 		typescript({
 			sourceMap: !production,
 			inlineSources: !production
