@@ -2,6 +2,9 @@
 
 1. Start `js-libp2p-webrtc-star` server. Just run
    `npm run star-signal -- --port 3000 --host localhost`
+
+   (or use the bootstrap at `libp2p/js-libp2p-examples`)
+
 2. Start me. Just run `npm run start:dev`
 
 ## HOW
@@ -28,3 +31,11 @@ $ # rollup-plugin-node-polyfills seems more updated but it blows up the compile 
 ```
 
 ref: https://github.com/nodejs/readable-stream/issues/348
+
+---
+
+## BLOCKERS
+
+> this.once is not a function
+
+f this error. i give up.

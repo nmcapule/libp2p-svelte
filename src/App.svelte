@@ -4,6 +4,8 @@
   import Libp2pWebSockets from "libp2p-websockets";
   import Libp2pMplex from "libp2p-mplex";
   import Libp2pBootstrap from "libp2p-bootstrap";
+  import Libp2pKadDHT from "libp2p-kad-dht";
+  import Libp2pGossipsub from "libp2p-gossipsub";
   import { NOISE as LIBP2P_NOISE } from "libp2p-noise";
   import { onMount } from "svelte";
 
@@ -21,19 +23,25 @@
         connEncryption: [LIBP2P_NOISE],
         streamMuxer: [Libp2pMplex],
         peerDiscovery: [Libp2pBootstrap],
+        dht: Libp2pKadDHT,
+        pubsub: Libp2pGossipsub,
       },
       config: {
+        dht: {
+          enabled: true,
+          randomWalk: {
+            enabled: true,
+          },
+        },
         peerDiscovery: {
-          // The `tag` property will be searched when creating the instance of your Peer Discovery service.
-          // The associated object, will be passed to the service when it is instantiated.
           [Libp2pBootstrap.tag]: {
             enabled: true,
             list: [
-              "/dnsaddr/bootstrap.libp2p.io/p2p/QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN",
-              "/dnsaddr/bootstrap.libp2p.io/p2p/QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb",
-              "/dnsaddr/bootstrap.libp2p.io/p2p/QmZa1sAxajnQjVM8WjWXoMbmPd7NsWhfKsPkErzpm9wGkp",
-              "/dnsaddr/bootstrap.libp2p.io/p2p/QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa",
-              "/dnsaddr/bootstrap.libp2p.io/p2p/QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt",
+              "/dnsaddr/bootstrap.libp2p.io/p2p/bbq",
+              // "/dnsaddr/bootstrap.libp2p.io/p2p/QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb",
+              // "/dnsaddr/bootstrap.libp2p.io/p2p/QmZa1sAxajnQjVM8WjWXoMbmPd7NsWhfKsPkErzpm9wGkp",
+              // "/dnsaddr/bootstrap.libp2p.io/p2p/QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa",
+              // "/dnsaddr/bootstrap.libp2p.io/p2p/QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt",
             ],
           },
         },
